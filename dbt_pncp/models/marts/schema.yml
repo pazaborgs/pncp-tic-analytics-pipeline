@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: fct_contratacoes
+    description: "Tabela fato (Gold) de contratações públicas de Santos/SP enriquecida com indicadores econômicos, operacionais e classificação heurística de TIC."
+    columns:
+      - name: numero_controle_pncp
+        description: "Chave primária única da contratação no PNCP."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: status_processo
+        description: "Estágio operacional atual do processo licitatório."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Cancelada (Revogada/Anulada/Suspensa)'
+                  - 'Homologada'
+                  - 'Em Andamento'
+                  - 'Encerrada sem Homologação'
+
+      - name: grupo_competitividade
+        description: "Agrupamento de modalidades por natureza de competição."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Licitação Competitiva'
+                  - 'Contratação Direta'
+                  - 'Procedimento Auxiliar'
+
+      - name: categoria_tic
+        description: "Classificação heurística de Tecnologia da Informação e Comunicação (TIC)."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Não-TIC'
+                  - 'Software e Licenciamento'
+                  - 'Redes, Cloud e Segurança'
+                  - 'Hardware e Equipamentos'
+                  - 'Serviços de TI'
+
+      - name: is_tic
+        description: "Flag booleana indicando se a contratação pertence ao escopo de TIC."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+
+      - name: orgao_esfera_nome
+        description: "Esfera administrativa do órgão comprador."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Municipal'
+                  - 'Estadual'
+                  - 'Federal'
+                  - 'Outros'
+
+      - name: porte_contratacao
+        description: "Faixa de porte financeiro baseada no valor total estimado."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Pequeno Porte (Até R$ 60 mil)'
+                  - 'Médio Porte (R$ 60 mil a R$ 500 mil)'
+                  - 'Grande Porte (Acima de R$ 500 mil)'

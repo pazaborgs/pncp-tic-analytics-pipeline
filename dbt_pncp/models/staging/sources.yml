@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: bronze_pncp
+    project: pncp-project
+    dataset: bronze_pncp
+    description: "Fonte de dados Bronze do PNCP, contendo os dados brutos extraídos da API e classificações via IA."
+    tables:
+      - name: bronze_contratacoes_publicacao
+        description: "Contém os dados brutos de contratações públicas de Santos/SP, armazenados em formato Parquet."
+      - name: bronze_classificacao_tic_ia
+        description: "Classificação semântica de contratações de TIC gerada em lote via Gemini."

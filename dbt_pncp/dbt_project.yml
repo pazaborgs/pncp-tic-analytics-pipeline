@@ -1,0 +1,25 @@
+name: "dbt_pncp"
+version: "1.0.0"
+
+profile: "dbt_pncp"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets: # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_pncp:
+    +hours_to_expiration: 1200
+    staging:
+      +materialized: view
+      +schema: stg_pncp
+    marts:
+      +materialized: table
+      +schema: marts_pncp

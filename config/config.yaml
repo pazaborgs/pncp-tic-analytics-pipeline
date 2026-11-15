@@ -1,0 +1,84 @@
+# Identificação do projeto
+project:
+  name: "pncp-santos-tic"
+  version: "0.1.0"
+
+# Conexão e resiliência da API PNCP
+
+api:
+  base_url: "https://pncp.gov.br/api/consulta"
+  endpoints:
+    contratacoes_publicacao: "/v1/contratacoes/publicacao"
+  pagination:
+    tamanho_pagina: 50
+    pagina_inicial: 1
+  resilience:
+    timeout_seconds: 30
+    max_retries: 5
+    backoff_factor: 1.5
+    rate_limit_sleep_seconds: 0.5
+  headers:
+    Accept: "application/json"
+    User-Agent: "PNCP-DataEngineering-Project/0.1.0"
+
+# Escopo e filtros de extração
+
+extraction:
+  filter_scope:
+    uf: "SP"
+    municipio_nome: "Santos"
+    codigo_municipio_ibge: "3548500"
+  modalidades:
+    - id: 6
+      nome: "Pregão - Eletrônico"
+      ativo: true
+    - id: 8
+      nome: "Dispensa de Licitação"
+      ativo: true
+    - id: 9
+      nome: "Inexigibilidade"
+      ativo: true
+    - id: 4
+      nome: "Concorrência - Eletrônica"
+      ativo: true
+    - id: 12
+      nome: "Credenciamento"
+      ativo: true
+  date_range:
+    start_date: "2024-01-01"
+    end_date: "today"
+    window_frequency: "6M"
+
+# Armazenamento local (Bronze)
+
+storage:
+  raw_data_path: "data/raw/contratacoes"
+  bronze_path: "data/bronze/contratacoes"
+  file_format: "parquet"
+  partition_by:
+    - "ano_extracao"
+    - "modalidade_id"
+
+# BigQuery e camadas dbt
+
+bigquery:
+  env_project_var: "GCP_PROJECT_ID"
+  location: "US"
+  datasets:
+    bronze: "bronze_pncp"
+    silver: "stg_pncp"
+    gold: "marts_pncp"
+  tables:
+    contratacoes_bronze: "bronze_contratacoes_publicacao"
+    classificacao_tic_bronze: "bronze_classificacao_tic_ia"
+  load_job:
+    write_disposition: "WRITE_APPEND"
+
+# LLM
+
+llm:
+  model_name: "gemini-3.5-flash-lite"
+  batch_size: 50
+  temperature: 0.0
+  rate_limit_sleep_seconds: 4.5
+  output_parquet_path: "data/bronze/classificacao_tic/classificacao_tic_ia.parquet"
