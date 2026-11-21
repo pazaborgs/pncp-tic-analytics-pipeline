@@ -17,3 +17,5 @@ dbt_pncp/dbt_packages/
 docs/study_notes.md
 .vscode/
 extensoes.txt
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

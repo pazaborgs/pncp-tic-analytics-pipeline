@@ -1,0 +1,106 @@
+table _medidas
+	lineageTag: 86518b9b-ced5-4796-b066-87667dbf40dc
+
+	measure 'Qtd Processos' = DISTINCTCOUNT(fct_contratacoes[numero_controle_pncp])
+		formatString: 0
+		lineageTag: 7b0ef121-ad36-49a6-b375-ea677a4c9f93
+
+	measure 'Valor Estimado' = SUM(fct_contratacoes[valor_total_estimado])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 163f5611-8d57-4f91-ad45-5d6a0f1f5b8b
+
+	measure 'Valor Homologado' = SUM(fct_contratacoes[valor_total_homologado])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: d4b54a4e-38f8-4413-bec5-8554aa325a29
+
+	measure 'Qtd Processos Validos' =
+			
+			CALCULATE(
+			    [Qtd Processos],
+			    fct_contratacoes[status_processo] IN {"Homologada", "Em Andamento"}
+			)
+		formatString: 0
+		lineageTag: 30d6b821-3378-490b-b185-3eedc4998d1e
+
+	measure 'Ticket Medio Homologado' =
+			
+			CALCULATE(
+			    AVERAGE(fct_contratacoes[valor_total_homologado]),
+			    fct_contratacoes[status_processo] = "Homologada"
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 44f5ffb4-6d64-4cc5-ad2f-917d25529588
+
+	measure '% Share Processos' =
+			
+			DIVIDE(
+			    [Qtd Processos],
+			    CALCULATE([Qtd Processos], ALLSELECTED(fct_contratacoes[categoria_tic]))
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 19f83325-0d28-4510-8700-2a2109c48074
+
+	measure '% Share Valor Homologado' =
+			
+			DIVIDE(
+			    [Valor Homologado],
+			    CALCULATE([Valor Homologado], ALLSELECTED(fct_contratacoes[categoria_tic]))
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b5ee5952-1c9f-4ac7-ac98-43dbb2d95ffc
+
+	measure 'Economia Gerada' =
+			
+			CALCULATE(
+			    SUM(fct_contratacoes[desagio_absoluto]),
+			    fct_contratacoes[status_processo] = "Homologada"
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a27ec26a-ea57-46e2-9377-bdd9680852f6
+
+	measure 'Desagio % Medio Simples' =
+			
+			CALCULATE(
+			    AVERAGE(fct_contratacoes[desagio_percentual]),
+			    fct_contratacoes[status_processo] = "Homologada"
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 27aeec38-2242-43d5-86ac-41e66fe70999
+
+	measure 'Desagio % Ponderado' =
+			
+			DIVIDE(
+			    [Economia Gerada],
+			    CALCULATE([Valor Estimado], fct_contratacoes[status_processo] = "Homologada")
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c8e4b01a-78c3-4451-a4c6-99b6022def10
+
+	measure 'Prazo Medio Janela (Dias)' = AVERAGE(fct_contratacoes[dias_janela_proposta])
+		formatString: 0
+		lineageTag: 07521c21-470c-457d-8f07-83cd6b59b91e
+
+	measure '% Processos com SRP' =
+			
+			DIVIDE(
+			    CALCULATE([Qtd Processos], fct_contratacoes[is_srp] = TRUE()),
+			    [Qtd Processos]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cb5522e3-7220-4ca9-a0c3-35b84fab4ef4
+
+	column Column
+		formatString: 0
+		lineageTag: 8a9ea705-c924-4a3d-bd48-d88e94286330
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _medidas = calculated
+		mode: import
+		source = ROW("Column", BLANK())
+
+	annotation PBI_Id = a4b6658a057e4ef1a2e9c0a5287611a4
+

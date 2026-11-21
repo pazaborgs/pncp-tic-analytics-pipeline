@@ -92,7 +92,7 @@ A partir das 14 consultas analíticas em [`dbt_pncp/analyses/`](dbt_pncp/analyse
 3. **Gargalo de Homologação (Eixo 1):**
    - Dos **353 processos de TIC** abertos, **28,05% (99 editais)** terminaram **Encerrados sem Homologação**, deixando **R$ 89,32 milhões estimados** travados pelo caminho.
 4. **Quem Puxa a Escala no Município e Efeito do Porte (Eixo 3):**
-   - A **Autoridade Portuária de Santos (CODESP/APS, esfera Federal)** responde sozinha por **~44% de todo o valor homologado** (`R$ 62,87M` em apenas 11 processos de modernização portuária), seguida pela **Prefeitura Municipal de Santos** (`R$ 59,92M` somando suas 3 principais unidades e liderando em quantidade de processos).
+   - Consolidando por órgão comprador (`orgao_razao_social`), o **Município de Santos** (`R$ 65,39M` em 91 processos / 6 unidades) e a **Autoridade Portuária de Santos — CODESP/APS** (`R$ 62,87M` em apenas 11 processos federais) concentram juntos **89,5%** de todo o valor homologado de TIC da cidade.
    - Os **35 processos de Grande Porte (> R$ 500 mil)** responderam por **95,7% de toda a economia em reais** (`R$ 77,78M`), embora tenham média simples percentual menor (`29,99%`) que compras de pequeno/médio porte (`35%–36%`).
 5. **Oportunidade de Consolidação via Atas de Registro de Preços — SRP (Eixos 2 e 4):**
    - Apenas **7,89% dos Pregões Eletrônicos** de TIC utilizam SRP, ao mesmo tempo em que a Prefeitura realizou dezenas de Dispensas avulsas de Hardware no período. Centralizar a compra de equipamentos recorrentes em Atas de Registro de Preços e calibrar a cesta de preços de Telecom/Cloud com bases públicas homologadas são as duas maiores oportunidades práticas de eficiência identificadas.

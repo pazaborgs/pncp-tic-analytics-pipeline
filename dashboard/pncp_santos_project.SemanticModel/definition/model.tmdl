@@ -1,0 +1,29 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["fct_contratacoes"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fct_contratacoes
+ref table DateTableTemplate_7fbd25cb-ec8c-47fc-82a8-ce0984d256fb
+ref table LocalDateTable_84cf120a-3393-44a1-a399-6a1e48eb309b
+ref table LocalDateTable_bcf334c0-ad7f-495e-b6c7-1fbe98d46cbf
+ref table LocalDateTable_d3eddd67-3e78-415d-b03c-5d3375e2715f
+ref table LocalDateTable_10a0312c-4d27-435e-9b8d-88a5ae935730
+ref table LocalDateTable_0bd3cb21-4b73-4bbe-bf51-2e69cf68e6eb
+ref table LocalDateTable_bfa1c3b8-8107-4312-a9ab-82251ed26939
+ref table LocalDateTable_2eec257e-c20e-4bf4-a208-04b6bbf6997b
+ref table LocalDateTable_c063e354-258d-4ae9-b162-efab2167ab0d
+ref table _medidas
+
+ref cultureInfo pt-BR
+

@@ -148,18 +148,18 @@ Total de consultas executadas: **14**
 
 ## `eixo_3_governanca/top_unidades_compradoras.sql` (10 linhas)
 
-| orgao_razao_social | orgao_esfera_nome | unidade_nome | total_processos | soma_total_homologado |
+| orgao_razao_social | orgao_esfera_nome | qtd_unidades | total_processos | soma_total_homologado |
 | --- | --- | --- | --- | --- |
-| COMPANHIA DOCAS DO ESTADO DE SAO PAULO | Federal | GELIC-GERÊNCIA DE LICITAÇÃO E CONTRATOS | 11 | 62.868.749,01 |
-| MUNICIPIO DE SANTOS | Municipal | MSP-PREFEITURA MUNICIPAL DE SANTOS | 50 | 31.482.554,42 |
-| MUNICIPIO DE SANTOS | Municipal | Prefeitura Municipal de Santos | 6 | 20.938.188,65 |
-| MUNICIPIO DE SANTOS | Municipal | SECRETARIA DE GESTAO | 18 | 7.494.385,52 |
-| SECRETARIA DE ESTADO DA SAUDE | Estadual | ESP-HOSP. GUILHERME ALVARO, SANTOS | 33 | 4.054.537,23 |
-| CAMARA MUNICIPAL DE SANTOS | Municipal | CAMARA MUNICIPAL DE SANTOS | 11 | 4.016.793,92 |
-| MUNICIPIO DE SANTOS | Municipal | GERAL | 11 | 3.184.800,41 |
-| CAMARA MUNICIPAL DE SANTOS | Municipal | CÂMARA MUNICIPAL DE SANTOS - SP | 12 | 1.721.465,58 |
-| MUNICIPIO DE SANTOS | Municipal | SECRETARIA MUNICIPAL DE SAUDE | 5 | 1.554.646,91 |
-| SAO PAULO SECRETARIA DA SEGURANCA PUBLICA | Estadual | ESP-COMANDO POLIC.INT.-6 SANTOS | 22 | 910.395,58 |
+| MUNICIPIO DE SANTOS | Municipal | 6 | 91 | 65.392.135,91 |
+| COMPANHIA DOCAS DO ESTADO DE SAO PAULO | Federal | 1 | 11 | 62.868.749,01 |
+| CAMARA MUNICIPAL DE SANTOS | Municipal | 2 | 23 | 5.738.259,50 |
+| SECRETARIA DE ESTADO DA SAUDE | Estadual | 2 | 35 | 4.349.587,23 |
+| SAO PAULO SECRETARIA DA SEGURANCA PUBLICA | Estadual | 4 | 37 | 1.826.288,31 |
+| COMPANHIA DE ENGENHARIA DE TRAFEGO DE SANTOS - CET - SANTOS | Outros | 1 | 2 | 756.169,09 |
+| SECRETARIA DA FAZENDA E PLANEJAMENTO | Estadual | 1 | 1 | 659.989,80 |
+| SAO PAULO SECRETARIA DA EDUCACAO | Estadual | 1 | 2 | 542.627,30 |
+| INSTITUTO DE PREVIDENCIA SOCIAL DOS SERVIDORES PUBLICOS MUNICIPAIS DE SANTOS | Municipal | 1 | 5 | 488.032,91 |
+| Companhia de Habitação da Baixada Santista/SP | Municipal | 2 | 8 | 244.251,72 |
 
 ---
 

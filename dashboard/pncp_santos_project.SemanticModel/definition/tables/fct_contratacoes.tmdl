@@ -1,0 +1,507 @@
+table fct_contratacoes
+	lineageTag: 4824b64f-c4ed-4f6d-ab47-ee1582a8d44c
+
+	column numero_controle_pncp
+		dataType: string
+		lineageTag: 098acb52-0f50-4a53-a0ab-60bec45388d0
+		summarizeBy: none
+		sourceColumn: numero_controle_pncp
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_compra
+		dataType: int64
+		formatString: 0
+		lineageTag: fd0793ec-ac08-4f32-98e8-fb94f2873ca8
+		summarizeBy: sum
+		sourceColumn: ano_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column sequencial_compra
+		dataType: int64
+		formatString: 0
+		lineageTag: e222df4a-eb15-4cee-9bc5-25796b4b769d
+		summarizeBy: sum
+		sourceColumn: sequencial_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_compra
+		dataType: string
+		lineageTag: 8d69b055-1bf3-459e-9bed-0ab36dd35bc7
+		summarizeBy: none
+		sourceColumn: numero_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_processo
+		dataType: string
+		lineageTag: 27a4d4b5-f68c-4c6c-a920-7219f3d22886
+		summarizeBy: none
+		sourceColumn: numero_processo
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgao_cnpj
+		dataType: string
+		lineageTag: fd236514-d256-4015-9ebc-89216e057211
+		summarizeBy: none
+		sourceColumn: orgao_cnpj
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgao_razao_social
+		dataType: string
+		lineageTag: 5aa2283c-312e-469f-9fbf-5c5603e85d7f
+		summarizeBy: none
+		sourceColumn: orgao_razao_social
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgao_poder_id
+		dataType: string
+		lineageTag: b4988022-ed92-48b5-988e-7f3c52104efd
+		summarizeBy: none
+		sourceColumn: orgao_poder_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgao_esfera_id
+		dataType: string
+		lineageTag: 524c6536-1749-4610-97ac-81796d812a26
+		summarizeBy: none
+		sourceColumn: orgao_esfera_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column unidade_codigo
+		dataType: string
+		lineageTag: dc0b1652-29ca-416a-88d5-eb3ce7da08ff
+		summarizeBy: none
+		sourceColumn: unidade_codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column unidade_nome
+		dataType: string
+		lineageTag: 3a7abaec-6a60-484c-8a8a-18f0d1714fa5
+		summarizeBy: none
+		sourceColumn: unidade_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column municipio_nome
+		dataType: string
+		lineageTag: 19168dff-9874-4e31-9ca5-ba99e4171f93
+		summarizeBy: none
+		sourceColumn: municipio_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf_sigla
+		dataType: string
+		lineageTag: 0e97e9ca-c336-4652-ada2-f7352ee5738e
+		summarizeBy: none
+		sourceColumn: uf_sigla
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo_ibge
+		dataType: string
+		lineageTag: c60a38dc-967d-41d9-b227-4663389ef246
+		summarizeBy: none
+		sourceColumn: codigo_ibge
+
+		annotation SummarizationSetBy = Automatic
+
+	column modalidade_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 76d1730e-e85a-4474-b344-5b3510ae61f3
+		summarizeBy: sum
+		sourceColumn: modalidade_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column modalidade_nome
+		dataType: string
+		lineageTag: 210bc627-b58f-43c3-bdd3-2f212feebc46
+		summarizeBy: none
+		sourceColumn: modalidade_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column modo_disputa_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fe6cdd6-746f-4acc-a1b0-c9cfbe36538c
+		summarizeBy: sum
+		sourceColumn: modo_disputa_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column modo_disputa_nome
+		dataType: string
+		lineageTag: c4d1440e-01a4-4c4b-b087-17a2959eb202
+		summarizeBy: none
+		sourceColumn: modo_disputa_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column instrumento_convocatorio_nome
+		dataType: string
+		lineageTag: 146ed518-ae92-491e-b9fd-b33c6fa0a34a
+		summarizeBy: none
+		sourceColumn: instrumento_convocatorio_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column amparo_legal_codigo
+		dataType: int64
+		formatString: 0
+		lineageTag: 411e7d81-7bd9-4850-aa04-aca4998366dc
+		summarizeBy: sum
+		sourceColumn: amparo_legal_codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column amparo_legal_nome
+		dataType: string
+		lineageTag: bf6fae40-1132-4e09-90c1-65a235839ee5
+		summarizeBy: none
+		sourceColumn: amparo_legal_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column amparo_legal_descricao
+		dataType: string
+		lineageTag: ccb70df0-6a93-40e7-b947-10cc8761bc0e
+		summarizeBy: none
+		sourceColumn: amparo_legal_descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao_compra_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f5ffc2a8-48ef-4550-ab15-6474b83edf45
+		summarizeBy: sum
+		sourceColumn: situacao_compra_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column situacao_compra_nome
+		dataType: string
+		lineageTag: f42f3f17-fe77-4bf1-b1a4-6a03805533ab
+		summarizeBy: none
+		sourceColumn: situacao_compra_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_srp
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce1cbd57-722e-43ed-8dfd-76f56a12006a
+		summarizeBy: none
+		sourceColumn: is_srp
+
+		annotation SummarizationSetBy = Automatic
+
+	column objeto_compra
+		dataType: string
+		lineageTag: 4eaffffd-4b0d-499c-8dfa-5166aa91b28f
+		summarizeBy: none
+		sourceColumn: objeto_compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column informacao_complementar
+		dataType: string
+		lineageTag: 07b10e67-5887-4c89-bf34-de25be3a5bb2
+		summarizeBy: none
+		sourceColumn: informacao_complementar
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_tic
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5a5ecd41-4e97-4fae-b539-0736f055d10f
+		summarizeBy: none
+		sourceColumn: is_tic
+
+		annotation SummarizationSetBy = Automatic
+
+	column categoria_tic
+		dataType: string
+		lineageTag: 0dcd3196-a3dc-49cf-8637-8a1ab4043b6a
+		summarizeBy: none
+		sourceColumn: categoria_tic
+
+		annotation SummarizationSetBy = Automatic
+
+	column classified_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5ea37d42-a4db-4fd2-9c4d-698bd864ee7b
+		summarizeBy: none
+		sourceColumn: classified_at
+
+		variation Variação
+			isDefault
+			relationship: 77ab1a48-5e31-42e2-b182-abbbd76b2889
+			defaultHierarchy: LocalDateTable_84cf120a-3393-44a1-a399-6a1e48eb309b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_total_estimado
+		dataType: double
+		lineageTag: 6f26bb0f-1b79-455d-9834-101541a405f0
+		summarizeBy: sum
+		sourceColumn: valor_total_estimado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_total_homologado
+		dataType: double
+		lineageTag: 5c3b4b35-e0bb-4e47-b9e0-ad1c611905f8
+		summarizeBy: sum
+		sourceColumn: valor_total_homologado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dt_publicacao_pncp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 67f19067-4693-4714-90ec-16236487f940
+		summarizeBy: none
+		sourceColumn: dt_publicacao_pncp
+
+		variation Variação
+			isDefault
+			relationship: a16bf287-ca52-40f5-9245-a83f87446317
+			defaultHierarchy: LocalDateTable_bcf334c0-ad7f-495e-b6c7-1fbe98d46cbf.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_publicacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2d26ccbe-d720-400b-b117-697e147c2d6e
+		summarizeBy: none
+		sourceColumn: data_publicacao
+
+		variation Variação
+			isDefault
+			relationship: 3ad999da-b9a0-4b46-8273-4cdc5dcfc1cc
+			defaultHierarchy: LocalDateTable_d3eddd67-3e78-415d-b03c-5d3375e2715f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dt_abertura_proposta
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3d781c4c-2bb4-4882-84a1-7ca54663a486
+		summarizeBy: none
+		sourceColumn: dt_abertura_proposta
+
+		variation Variação
+			isDefault
+			relationship: 98f737a0-e510-4605-b5fd-4131e868b871
+			defaultHierarchy: LocalDateTable_10a0312c-4d27-435e-9b8d-88a5ae935730.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_encerramento_proposta
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9fa65c3a-71e2-4e5a-8ce2-c69697a96622
+		summarizeBy: none
+		sourceColumn: dt_encerramento_proposta
+
+		variation Variação
+			isDefault
+			relationship: 96778f9a-27a0-4722-870a-0166ef84ce1a
+			defaultHierarchy: LocalDateTable_0bd3cb21-4b73-4bbe-bf51-2e69cf68e6eb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt_atualizacao_global
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 580a66e9-3089-4d63-bbcb-a3d0fc06666a
+		summarizeBy: none
+		sourceColumn: dt_atualizacao_global
+
+		variation Variação
+			isDefault
+			relationship: 781a8d4e-e00e-4573-8c47-8eacbe9f809b
+			defaultHierarchy: LocalDateTable_bfa1c3b8-8107-4312-a9ab-82251ed26939.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _row_hash
+		dataType: string
+		lineageTag: 2aed5ad1-0058-40e2-af1e-fa5fad403088
+		summarizeBy: none
+		sourceColumn: _row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 10169d3b-43e0-4883-a067-92585a35ca7c
+		summarizeBy: none
+		sourceColumn: load_date
+
+		variation Variação
+			isDefault
+			relationship: 0e4a6906-fc5f-416f-9fcd-7620f45be0c8
+			defaultHierarchy: LocalDateTable_2eec257e-c20e-4bf4-a208-04b6bbf6997b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column source_file
+		dataType: string
+		lineageTag: 41578061-2b00-4bcf-af2f-89f4a57041e7
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingested_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 71855a76-31dc-4783-9c35-b543bd24c2dd
+		summarizeBy: none
+		sourceColumn: ingested_at
+
+		variation Variação
+			isDefault
+			relationship: ad4d9d58-bf10-47ec-9992-5976379136c4
+			defaultHierarchy: LocalDateTable_c063e354-258d-4ae9-b162-efab2167ab0d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column desagio_absoluto
+		dataType: double
+		lineageTag: 4a45454a-b702-40b5-9697-9bd5b69736bb
+		summarizeBy: sum
+		sourceColumn: desagio_absoluto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desagio_percentual
+		dataType: double
+		lineageTag: 05bd02ea-3bde-4e8a-9e9c-ff9979bbe4b4
+		summarizeBy: sum
+		sourceColumn: desagio_percentual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status_processo
+		dataType: string
+		lineageTag: 0937d975-8ec7-435c-9ae6-e6d722293474
+		summarizeBy: none
+		sourceColumn: status_processo
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo_competitividade
+		dataType: string
+		lineageTag: f2d37fd0-dc8c-4495-87af-5f2a3657dc14
+		summarizeBy: none
+		sourceColumn: grupo_competitividade
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgao_esfera_nome
+		dataType: string
+		lineageTag: f7459080-5cd7-40c1-844e-75b0d21e25c5
+		summarizeBy: none
+		sourceColumn: orgao_esfera_nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column porte_contratacao
+		dataType: string
+		lineageTag: e8551718-16c0-41ca-866d-63e0086c1dc2
+		summarizeBy: none
+		sourceColumn: porte_contratacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_publicacao
+		dataType: int64
+		formatString: 0
+		lineageTag: 235ba2fa-86d4-4734-8a97-99f8b87310bf
+		summarizeBy: sum
+		sourceColumn: ano_publicacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_publicacao
+		dataType: int64
+		formatString: 0
+		lineageTag: 0731a20a-aee0-4f19-858d-ffd48fc20a82
+		summarizeBy: sum
+		sourceColumn: mes_publicacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre_publicacao
+		dataType: int64
+		formatString: 0
+		lineageTag: c3c1b0fe-9653-446c-8359-4db9ef8d35af
+		summarizeBy: sum
+		sourceColumn: trimestre_publicacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_fim_de_ano
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b87e1d2b-e875-4491-b2f1-c2bafefce9f1
+		summarizeBy: none
+		sourceColumn: is_fim_de_ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column dias_janela_proposta
+		dataType: int64
+		formatString: 0
+		lineageTag: 1090a133-4c3f-4236-9e36-be7eab22e0a7
+		summarizeBy: sum
+		sourceColumn: dias_janela_proposta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_contratacoes = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"pncp-project_Database" = Fonte{[Name="pncp-project",Kind="Database"]}[Data],
+				    marts_pncp_Schema = #"pncp-project_Database"{[Name="marts_pncp",Kind="Schema"]}[Data],
+				    fct_contratacoes_Table = marts_pncp_Schema{[Name="fct_contratacoes",Kind="Table"]}[Data]
+				in
+				    fct_contratacoes_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

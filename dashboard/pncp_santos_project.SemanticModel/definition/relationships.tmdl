@@ -1,0 +1,40 @@
+relationship 77ab1a48-5e31-42e2-b182-abbbd76b2889
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.classified_at
+	toColumn: LocalDateTable_84cf120a-3393-44a1-a399-6a1e48eb309b.Date
+
+relationship a16bf287-ca52-40f5-9245-a83f87446317
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.dt_publicacao_pncp
+	toColumn: LocalDateTable_bcf334c0-ad7f-495e-b6c7-1fbe98d46cbf.Date
+
+relationship 3ad999da-b9a0-4b46-8273-4cdc5dcfc1cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.data_publicacao
+	toColumn: LocalDateTable_d3eddd67-3e78-415d-b03c-5d3375e2715f.Date
+
+relationship 98f737a0-e510-4605-b5fd-4131e868b871
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.dt_abertura_proposta
+	toColumn: LocalDateTable_10a0312c-4d27-435e-9b8d-88a5ae935730.Date
+
+relationship 96778f9a-27a0-4722-870a-0166ef84ce1a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.dt_encerramento_proposta
+	toColumn: LocalDateTable_0bd3cb21-4b73-4bbe-bf51-2e69cf68e6eb.Date
+
+relationship 781a8d4e-e00e-4573-8c47-8eacbe9f809b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.dt_atualizacao_global
+	toColumn: LocalDateTable_bfa1c3b8-8107-4312-a9ab-82251ed26939.Date
+
+relationship 0e4a6906-fc5f-416f-9fcd-7620f45be0c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.load_date
+	toColumn: LocalDateTable_2eec257e-c20e-4bf4-a208-04b6bbf6997b.Date
+
+relationship ad4d9d58-bf10-47ec-9992-5976379136c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_contratacoes.ingested_at
+	toColumn: LocalDateTable_c063e354-258d-4ae9-b162-efab2167ab0d.Date
+

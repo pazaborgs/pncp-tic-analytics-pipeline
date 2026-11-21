@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "pncp_santos_project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "90932582-10c0-4d79-88fd-b923048ed4f3"
+  }
+}
