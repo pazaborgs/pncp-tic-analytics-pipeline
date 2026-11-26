@@ -137,20 +137,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "e1d437792ca8c6e91e6a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_medidas"
-              }
-            },
-            "Property": "Valor Homologado"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "f39e7ac233710b60e2ab",
         "field": {
           "Column": {

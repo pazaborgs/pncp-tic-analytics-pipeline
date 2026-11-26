@@ -6,12 +6,14 @@ table _medidas
 		lineageTag: 7b0ef121-ad36-49a6-b375-ea677a4c9f93
 
 	measure 'Valor Estimado' = SUM(fct_contratacoes[valor_total_estimado])
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: "R$" #,0.00;-"R$" #,0.00;"R$" #,0.00
 		lineageTag: 163f5611-8d57-4f91-ad45-5d6a0f1f5b8b
 
 	measure 'Valor Homologado' = SUM(fct_contratacoes[valor_total_homologado])
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		lineageTag: d4b54a4e-38f8-4413-bec5-8554aa325a29
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	measure 'Qtd Processos Validos' =
 			
@@ -28,7 +30,7 @@ table _medidas
 			    AVERAGE(fct_contratacoes[valor_total_homologado]),
 			    fct_contratacoes[status_processo] = "Homologada"
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: "R$" #,0.00;-"R$" #,0.00;"R$" #,0.00
 		lineageTag: 44f5ffb4-6d64-4cc5-ad2f-917d25529588
 
 	measure '% Share Processos' =
@@ -55,14 +57,17 @@ table _medidas
 			    SUM(fct_contratacoes[desagio_absoluto]),
 			    fct_contratacoes[status_processo] = "Homologada"
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: "R$" #,0.00;-"R$" #,0.00;"R$" #,0.00
 		lineageTag: a27ec26a-ea57-46e2-9377-bdd9680852f6
 
 	measure 'Desagio % Medio Simples' =
 			
-			CALCULATE(
-			    AVERAGE(fct_contratacoes[desagio_percentual]),
-			    fct_contratacoes[status_processo] = "Homologada"
+			DIVIDE(
+			    CALCULATE(
+			        AVERAGE(fct_contratacoes[desagio_percentual]),
+			        fct_contratacoes[status_processo] = "Homologada"
+			    ),
+			    100
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 27aeec38-2242-43d5-86ac-41e66fe70999
@@ -88,6 +93,21 @@ table _medidas
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: cb5522e3-7220-4ca9-a0c3-35b84fab4ef4
+
+	measure 'Desagio Competitivo Geral' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        AVERAGE(fct_contratacoes[desagio_percentual]),
+			        REMOVEFILTERS(fct_contratacoes[is_tic]),
+			        fct_contratacoes[status_processo] = "Homologada",
+			        fct_contratacoes[grupo_competitividade] = "Licitação Competitiva"
+			    ),
+			    100
+			)
+		lineageTag: f060277a-7e87-4275-89b1-3a0851c3f291
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Column
 		formatString: 0

@@ -215,6 +215,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.468
 			          }
+			        },
+			        {
+			          "Órgão": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -387,6 +397,16 @@ cultureInfo pt-BR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Unidade Compradora": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -541,6 +561,16 @@ cultureInfo pt-BR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Modalidade": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -852,6 +882,16 @@ cultureInfo pt-BR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Objeto da Contratação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -1076,6 +1116,16 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "Categoria": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -3844,6 +3894,16 @@ cultureInfo pt-BR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Ano": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -4092,7 +4152,37 @@ cultureInfo pt-BR
 			          }
 			        },
 			        {
-			          "Quantidade de Processos": {
+			          "Quantidade de Processos TIC Efetivos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Quantidade de Processos TIC": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Qtd": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Contratações Diretas TIC": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -4116,6 +4206,16 @@ cultureInfo pt-BR
 			          "valor estimado": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Estimado sem Homologação": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -4131,6 +4231,26 @@ cultureInfo pt-BR
 			        {
 			          "valor homologado": {
 			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Total em Contratação Direta": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Homologado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -4282,6 +4402,16 @@ cultureInfo pt-BR
 			          "economia gerada": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Economia Acumulada": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -4317,6 +4447,16 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "Deságio (%)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -4354,6 +4494,16 @@ cultureInfo pt-BR
 			            },
 			            "Weight": 0.591
 			          }
+			        },
+			        {
+			          "Deságio Médio Ponderado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -4375,6 +4525,16 @@ cultureInfo pt-BR
 			          "prazo medio janela": {
 			            "State": "Generated",
 			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "Prazo Médio no Pregão (Dias)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -4411,6 +4571,32 @@ cultureInfo pt-BR
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "Pregões com Ata SRP": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__medida.desagio_competitivo_geral": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_medidas",
+			          "ConceptualProperty": "Desagio Competitivo Geral"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "desagio competitivo geral": {
+			            "State": "Generated"
 			          }
 			        }
 			      ]
@@ -7318,6 +7504,39 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "classified_at_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "fct_contratacoe_has_entity__medida_desagio_competitivo_geral": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_contratacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_contratacoe": {
+			          "Target": {
+			            "Entity": "fct_contratacoe"
+			          }
+			        },
+			        "entity__medida.desagio_competitivo_geral": {
+			          "Target": {
+			            "Entity": "entity__medida.desagio_competitivo_geral"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_contratacoe"
+			            },
+			            "Object": {
+			              "Role": "entity__medida.desagio_competitivo_geral"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_contratacoes_have_desagio_competitivo_geral"
 			        }
 			      ]
 			    },

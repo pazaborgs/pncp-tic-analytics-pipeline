@@ -61,7 +61,7 @@
 ## 3. Governança e Centralidade de Compras
 
 ### Perguntas Norteadoras e Consultas
-- **3.1 — Quem compra TIC em Santos:** Como os gastos se dividem entre as esferas (Municipal, Estadual e Federal) e quais as 10 unidades compradoras que mais concentram recursos? (`analyses/eixo_3_governanca/top_unidades_compradoras.sql`)
+- **3.1 — Quem compra TIC em Santos:** Como os gastos se dividem entre as esferas (Municipal, Estadual e Federal) e quais os 10 órgãos compradores (`orgao_razao_social`, consolidando as unidades do mesmo órgão) que mais concentram recursos? (`analyses/eixo_3_governanca/top_unidades_compradoras.sql`)
 - **3.2 — Ganho de Escala:** Compras de grande porte obtêm maior deságio percentual que compras pequenas/médias nas licitações competitivas de TIC? (`analyses/eixo_3_governanca/escala_porte_vs_desagio.sql`)
 
 ### Features e Regras de Cálculo na Gold

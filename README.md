@@ -1,71 +1,93 @@
-# Pipeline ELT & Analytics — Compras Públicas de TIC em Santos/SP (PNCP)
+# PNCP TIC Analytics — Compras Públicas de Tecnologia em Santos/SP (2024–2026)
 
-Projeto ponta a ponta de **Engenharia de Dados** e **Analytics Engineering** que extrai, classifica semanticamente via IA e analisa as contratações públicas de **Tecnologia da Informação e Comunicação (TIC)** divulgadas no [Portal Nacional de Contratações Públicas (PNCP)](https://www.gov.br/pncp/pt-br) no município de **Santos/SP** (`codigoMunicipioIbge = 3548500`, período 2024–2026).
+![Status](https://img.shields.io/badge/Status-V1%20Conclu%C3%ADda-1E5098?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.12%20(uv)-1D3D63?style=flat-square)
+![BigQuery](https://img.shields.io/badge/BigQuery-Sandbox%20Free%20Tier-0F5C6B?style=flat-square)
+![dbt](https://img.shields.io/badge/dbt-22%20Data%20Tests-C93C37?style=flat-square)
+![Power BI](https://img.shields.io/badge/Power%20BI-Editorial%20(.pbip)-E6D9BF?style=flat-square)
 
-Toda a arquitetura foi construída para rodar **100% no Free Tier** (Google BigQuery Sandbox + Google AI Studio), com autenticação *keyless* (ADC), controles de idempotência e validação estatística.
+Pipeline ponta a ponta de **Engenharia de Dados**, **Analytics Engineering** e **Business Intelligence** construído para responder a uma pergunta real de transparência e gestão pública: **como a cidade de Santos/SP compra tecnologia com dinheiro público?**
+
+O projeto extrai **5.176 licitações** da API oficial do [Portal Nacional de Contratações Públicas (PNCP)](https://www.gov.br/pncp/pt-br) (`codigoMunicipioIbge = 3548500`), aplica classificação semântica em lote via **LLM (Gemini + Pydantic)** auditada por **amostragem estatística estratificada**, modela a camada analítica no **BigQuery com dbt + Terraform** e entrega um **dashboard editorial de 3 páginas no Power BI** — rodando **100% no Free Tier** com autenticação *keyless* (ADC).
+
+![Tour animado pelas 3 páginas do Dashboard Power BI — Compras Públicas de TIC em Santos/SP](dashboard/assets/dashboard_tour.gif)
+
+> **Visualização rápida sem Power BI instalado:** abra o relatório completo em PDF clicando em [`dashboard/pncp_santos_project.pdf`](dashboard/pncp_santos_project.pdf).
 
 ---
 
-## Sumário da Documentação
+## Números-Chave do Projeto
 
-Abaixo está o índice completo dos documentos técnicos e analíticos do repositório. A capa deste `README` resume as duas frentes principais do projeto (**Engenharia** e **Analytics**):
+| **5.176** | **R$ 143,3 Mi** | **89,2%** *(±5,97%)* | **R$ 81,5 Mi** | **22 Testes** |
+| :---: | :---: | :---: | :---: | :---: |
+| Licitações processadas (TIC + Não-TIC) | Homologados em TIC em Santos/SP | Precisão ponderada da IA ($n = 50$) | Economia acumulada (2024–2026) | Data tests automatizados no `dbt build` |
 
-| Frente | Documento | Conteúdo Principal |
+---
+
+## Sumário da Documentação Completa
+
+Este `README` conta a história do projeto e resume cada fase de forma objetiva. Para se aprofundar nos detalhes técnicos, metodológicos ou de negócio, navegue pela documentação completa:
+
+| Frente | Documento | O que você encontra lá |
 | :--- | :--- | :--- |
-| **Contexto Geral** | [`docs/project_context.md`](docs/project_context.md) | Problema de negócio, escopo da API do PNCP e desenho da arquitetura Medalhão. |
-| **Engenharia** | [`docs/eng_features.md`](docs/eng_features.md) | Idempotência (`_row_hash`), carga Delta no BigQuery, classificação em lote com Gemini + Pydantic e orquestração. |
-| **Engenharia / Roadmap** | [`docs/future_features.md`](docs/future_features.md) | Evolução planejada: ingestão incremental (*High Watermark* / *Sliding Window*) e extração dos endpoints `/itens` e `/resultados`. |
-| **Estatística & IA** | [`docs/ai_evaluation_sample.md`](docs/ai_evaluation_sample.md) | Auditoria manual e cálculo de precisão por Amostragem Aleatória Estratificada ($n = 50$). |
-| **Analytics / Modelagem** | [`docs/analysis_decisions.md`](docs/analysis_decisions.md) | Regras de negócio da tabela fato `fct_contratacoes` e mapeamento das 14 perguntas norteadoras. |
-| **Analytics / SQL** | [`dbt_pncp/analyses/resultados_analises.md`](dbt_pncp/analyses/resultados_analises.md) | Tabelas de saída das 14 consultas SQL executadas no BigQuery, divididas em 5 eixos. |
-| **Analytics / Negócio** | [`docs/insights.md`](docs/insights.md) | **Principais insights**, comparativo com benchmarks externos (BreveIA, TCU, Enap, TCESP) e hipóteses de melhoria. |
+| **Domínio & Escopo** | [`docs/project_context.md`](docs/project_context.md) | Ciclo da Lei nº 14.133/2021, dicionário completo da API do PNCP e escopo da extração. |
+| **Engenharia de Dados** | [`docs/eng_features.md`](docs/eng_features.md) | Idempotência (`_row_hash`), carga Delta no BigQuery, LLM em lote, Terraform, dbt e `.pbip`. |
+| **Estatística & IA** | [`docs/ai_evaluation_sample.md`](docs/ai_evaluation_sample.md) | Auditoria manual completa das 50 contratações sorteadas na Amostragem Aleatória Estratificada. |
+| **Modelagem Gold** | [`docs/analysis_decisions.md`](docs/analysis_decisions.md) | Regras de negócio da tabela fato `fct_contratacoes` e mapeamento das 14 perguntas norteadoras. |
+| **Resultados SQL** | [`dbt_pncp/analyses/resultados_analises.md`](dbt_pncp/analyses/resultados_analises.md) | Tabelas formatadas com as saídas reais das 14 consultas SQL executadas no BigQuery. |
+| **Insights de Negócio** | [`docs/insights.md`](docs/insights.md) | Leitura executiva dos 4 eixos, comparativo com benchmarks (BreveIA, TCU, TCESP) e ideias de melhoria. |
+| **Dashboard (PDF)** | [`dashboard/pncp_santos_project.pdf`](dashboard/pncp_santos_project.pdf) | Exportação em PDF das 3 páginas do painel editorial no Power BI. |
+| **Capítulo Extra / V2** | [`docs/future_features.md`](docs/future_features.md) | Próxima evolução planejada: Apache Airflow local (`docker-compose`), *High Watermark* e `/itens`. |
 
 ---
 
-## Arquitetura e Stack Tecnológica
+## A História do Projeto (Como Ele Foi Nascendo aos Poucos)
+
+Em vez de baixar um CSV pronto do Kaggle, a ideia aqui foi encarar uma **API governamental brasileira real — com todas as suas imperfeições** — e ir resolvendo cada obstáculo conforme ele aparecia:
+
+1. **O primeiro obstáculo (sem botão "filtrar TI"):** O PNCP não traz uma coluna dizendo se um edital é de tecnologia. A primeira tentativa usando filtros por palavras-chave (Regex) no texto livre falhou rápido: palavras como *"monitor"*, *"servidor"* e *"licença"* puxavam monitor multiparamétrico cirúrgico, festa do Dia do Servidor Público e licença ambiental. Isso motivou a criação de um classificador semântico em lote com **Gemini + Pydantic**.
+2. **A recusa em tratar a IA como caixa-preta:** Usar LLM sem medir erro é arriscado. Em vez de confiar cegamente no resultado, sorteamos uma **amostra aleatória estratificada ($n = 50$)**, auditamos manualmente edital por edital e medimos a precisão real (**89,2% ± 5,97%**), usando os erros de fronteira (como *drone de larvicida* e *TV Câmara*) para calibrar o prompt.
+3. **O impasse do Free Tier (BigQuery Sandbox):** Sem cartão de crédito no GCP, o BigQuery Sandbox expira tabelas após 60 dias. Em vez de ver isso como bloqueio, transformamos os **Parquets locais com `_row_hash` (SHA-256)** na fonte imutável da verdade: todo o Data Warehouse pode ser reconstruído do zero em segundos (`main.py --skip-ingest`), sem gastar nenhum token novo de IA.
+4. **O susto de qualidade de dados na análise:** Ao montar o ranking dos maiores compradores de TIC em Santos, parecia inicialmente que a Autoridade Portuária (CODESP) gastava o dobro da Prefeitura. Investigando os nomes das unidades, descobrimos que o PNCP fragmenta a Prefeitura em **6 grafias diferentes de unidades compradoras** — quando unificamos por órgão (`orgao_razao_social`), o **Município de Santos (R$ 65,39M)** assumiu o **1º lugar** frente à **CODESP (R$ 62,87M)**.
+5. **Fechando a vitrine com design editorial:** Para o dashboard não parecer um painel poluído cheio de caixas coloridas (e não quebrar se o Sandbox expirar), conectamos o Power BI em modo **Import**, aplicamos uma paleta inspirada em *Our World in Data* e *The Pudding* e versionamos o relatório em texto aberto no Git no formato **`.pbip`**.
+
+---
+
+## Arquitetura Geral
 
 ```mermaid
 flowchart LR
     API["API PNCP<br/>(/v1/contratacoes/publicacao)"] --> RAW["Camada Raw<br/>(JSON Paginado)"]
-    RAW --> BRONZE["Camada Bronze Local<br/>(Parquet + SHA-256 _row_hash)"]
+    RAW --> BRONZE["Bronze Local<br/>(Parquet + SHA-256 _row_hash)"]
     BRONZE --> LLM["Classificador IA<br/>(Gemini + Pydantic Batch)"]
     BRONZE --> BQ_BRONZE["BigQuery Bronze<br/>(Delta Upload)"]
     LLM --> BQ_BRONZE
-    BQ_BRONZE --> DBT_STG["dbt Silver (stg_pncp)<br/>(Deduplicação + LEFT JOIN IA)"]
+    BQ_BRONZE --> DBT_STG["dbt Silver (stg_pncp)<br/>(QUALIFY ROW_NUMBER + LEFT JOIN IA)"]
     DBT_STG --> DBT_GOLD["dbt Gold (marts_pncp)<br/>(fct_contratacoes + 22 Data Tests)"]
-    DBT_GOLD --> ANALYSES["14 Análises SQL & Insights"]
+    DBT_GOLD --> SQL["14 Análises SQL<br/>(dbt analyses/)"]
+    DBT_GOLD --> PBI["Power BI Editorial<br/>(Modo Import · .pbip)"]
 ```
 
-- **Linguagem & Qualidade de Código:** Python 3.12 (`uv`), `ruff`
-- **Ingestão & Armazenamento Local:** `requests` (`HTTPAdapter` + `Retry`), `pandas`, `pyarrow` (Parquet)
-- **Classificação Semântica (LLM):** `google-genai` (`gemini-3.5-flash-lite`), `pydantic` (*Structured Outputs*), `tenacity`
-- **Infraestrutura como Código (IaC):** Terraform (`hashicorp/google`)
-- **Data Warehouse & Modelagem:** Google BigQuery (`bronze_pncp`, `stg_pncp`, `marts_pncp`), `dbt-core` & `dbt-bigquery`
+**Stack:** Python 3.12 (`uv`, `ruff`), `requests`, `pandas`, `pyarrow` (Parquet), `google-genai` (`gemini-3.5-flash-lite`), `pydantic`, `tenacity`, Terraform, Google BigQuery, `dbt-core` / `dbt-bigquery` e Power BI Desktop (`.pbip`).
 
 ---
 
-## Frente 1 — Engenharia de Dados & Classificação via IA
+## Fase 1 — Ingestão Resiliente & Camada Bronze Idempotente
 
-Detalhes completos em [`docs/eng_features.md`](docs/eng_features.md).
+> Documentação detalhada: [`docs/project_context.md`](docs/project_context.md) e [`docs/eng_features.md`](docs/eng_features.md)
 
-1. **Extração Resiliente e Normalização Bronze (`src/ingest/`):**
-   - Consumo paginado do endpoint `/v1/contratacoes/publicacao` dividido em janelas semestrais e 5 modalidades de contratação (`ingest_pncp.py`).
-   - Achatamento do JSON aninhado para Parquet (`to_parquet.py`) com geração do hash SHA-256 (`_row_hash`) **antes** da inclusão de metadados de linhagem (`_load_date`, `_ingested_at`).
-2. **Enriquecimento Semântico com LLM em Lote (`src/classification/`):**
-   - O PNCP não possui uma flag nativa que isole contratações de TI no cabeçalho do processo, e filtros por Regex falham em ambiguidades comuns do setor público (*"monitor multiparamétrico cirúrgico"*, *"Dia do Servidor Público"*, *"licença ambiental"*).
-   - Os objetos de compra (`5.176` processos únicos) são avaliados pelo Gemini em lotes de 50 registros forçando o contrato Pydantic `BatchClassification` (`Literal` restrito a 5 categorias), com *checkpoint* incremental em Parquet. Isso elevou a identificação de processos de TIC em **+75,6%** frente ao filtro léxico (de `201` para `353` processos).
-3. **Carga Incremental Delta no BigQuery e Governança dbt (`src/load/`, `terraform/`, `dbt_pncp/`):**
-   - O `load_to_bigquery.py` consulta as chaves já existentes no BigQuery (`_row_hash` para contratações e `numero_controle_pncp` para a classificação IA) e envia apenas registros novos ou atualizados.
-   - O Terraform provisiona os datasets com expiração ajustada aos limites do BigQuery Sandbox (50 dias), e o dbt constrói a camada Silver (`stg_contratacoes`) e a tabela fato Gold (`fct_contratacoes`) validada por **22 testes de qualidade** (`unique`, `not_null`, `accepted_values`).
+- **Por que extrair todas as 5.176 contratações (e não só TI)?** Sem trazer o restante das compras do município (`Não-TIC`), seria impossível responder se tecnologia gera mais ou menos deságio do que as compras comuns da cidade.
+- **Extração em janelas (`src/ingest/ingest_pncp.py`):** Consome `/v1/contratacoes/publicacao` em janelas semestrais (`6MS`) e 5 modalidades, com `HTTPAdapter` + `Retry` para lidar com instabilidades da API pública.
+- **Idempotência antes dos metadados (`src/ingest/to_parquet.py`):** Os JSONs brutos ficam intocados em `data/raw/`. Ao normalizar para Parquet por `load_date`, o hash SHA-256 (`_row_hash`) é gerado sobre o payload original **antes** de injetar `_load_date` e `_ingested_at`. Se a licitação não mudou na API, o hash permanece idêntico.
 
 ---
 
-## Frente 2 — Analytics, Validação Estatística & Insights de Negócio
+## Fase 2 — Classificação Semântica com IA & Validação Estatística
 
-Detalhes completos em [`docs/ai_evaluation_sample.md`](docs/ai_evaluation_sample.md), [`docs/analysis_decisions.md`](docs/analysis_decisions.md) e [`docs/insights.md`](docs/insights.md).
+> Documentação detalhada: [`docs/ai_evaluation_sample.md`](docs/ai_evaluation_sample.md)
 
-### 2.1 Validação Estatística do Classificador (`n = 50`)
-Para comprovar a confiabilidade da camada Gold sem auditar manualmente milhares de linhas, foi aplicada uma **Amostragem Aleatória Estratificada** (`evaluate_sample.py`, `random_state=42`, $n_h = 10$ por estrato):
+- **Lotes estruturados com Pydantic (`src/classification/`):** Envia lotes de 50 objetos para o `gemini-3.5-flash-lite` exigindo aderência ao schema `BatchClassification` (`Literal` restrito às 5 categorias do domínio). Os resultados são salvos com checkpoint em `classificacao_tic_ia.parquet` — cada ID passa pelo LLM uma única vez, gerando **+75,6%** mais processos de TIC detectados frente ao Regex (de `201` para `353` processos).
+- **Auditoria Estatística (`evaluate_sample.py`, `random_state=42`, $n = 50$):**
 
 | Estrato ($h$) | Total na Base ($N_h$) | Peso TIC ($W_h$) | Amostra ($n_h$) | Precisão Binária (`is_tic`) | Precisão de Subcategoria |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -75,27 +97,63 @@ Para comprovar a confiabilidade da camada Gold sem auditar manualmente milhares 
 | **Software e Licenciamento** | 44 | 12,5% | 10 | **80%** *(8/10)* | **80%** *(8/10)* |
 | **Não-TIC** | 4.835 | — | 10 | **100%** *(10/10)* | **100%** *(10/10)* |
 
-- **Precisão Positiva Ponderada ($\hat{P}_{st}$):** `89,2%` ($\pm 4,6\%$ de erro padrão)
-- **Fidelidade de Subcategoria (entre Verdadeiros Positivos):** `97,1%` ($34/35$)
-- **Acurácia Global Ponderada:** `99,26%`
+- **Precisão Positiva Ponderada ($\hat{P}_{st}$):** **`89,2%`** ($\pm 5,97\%$ de erro padrão estratificado)
+- **Fidelidade de Subcategoria (entre Verdadeiros Positivos):** **`97,1%`** ($34/35$)
+- **Acurácia Global Ponderada ($N = 5.188$):** **`99,26%`**
 
-### 2.2 Principais Achados nas Compras de TIC de Santos (2024–2026)
-A partir das 14 consultas analíticas em [`dbt_pncp/analyses/`](dbt_pncp/analyses/resultados_analises.md), os dados revelaram 5 pontos centrais:
+---
 
-1. **Inversão entre Esforço Operacional e Orçamento (Eixo 0):**
-   - Nos **247 processos válidos** (`Homologada` + `Em Andamento`), o volume soma **R$ 260,29 milhões estimados** e **R$ 143,31 milhões homologados** (ticket médio de **R$ 604,67 mil**).
-   - **Hardware e Equipamentos** consome **54,25% dos editais** (134 processos), mas representa só **11,23% do valor homologado** (`R$ 16,10M`). Já **Serviços de TI** tem apenas **14,17% dos processos** (35 editais), mas concentra **43,24% do orçamento** (`R$ 61,97M`), refletindo contratos plurianuais complexos (sustentação de CCO, monitoramento e infraestrutura).
-2. **Economia de R$ 81,49 Milhões e o "Paradoxo do Deságio" (Eixo 1):**
-   - A economia bruta acumulada em TIC somou **R$ 81,49 milhões** entre 2024 e 2026 (`R$ 49,89M` apenas em 2026), com o deságio ponderado subindo de `17,43%` (2024) para `40,22%` (2026).
-   - Enquanto agregadores nacionais que incluem contratações diretas apontam deságio médio de `7,0%` em TI ([BreveIA](https://www.breveia.com.br/mercado/tecnologia/)), o recorte estrito de **licitações competitivas** em Santos fica entre **30,85% e 41,98%** (alinhado à literatura do TCU/Enap para pregões).
-   - Descontos extremos de **76% a 93,34%** concentrados em **Redes, Cloud e Segurança** (links IP dedicados e telefonia STFC) indicam **superestimativa na pesquisa de preços inicial**, e não apenas competição de lances.
-3. **Gargalo de Homologação (Eixo 1):**
-   - Dos **353 processos de TIC** abertos, **28,05% (99 editais)** terminaram **Encerrados sem Homologação**, deixando **R$ 89,32 milhões estimados** travados pelo caminho.
-4. **Quem Puxa a Escala no Município e Efeito do Porte (Eixo 3):**
-   - Consolidando por órgão comprador (`orgao_razao_social`), o **Município de Santos** (`R$ 65,39M` em 91 processos / 6 unidades) e a **Autoridade Portuária de Santos — CODESP/APS** (`R$ 62,87M` em apenas 11 processos federais) concentram juntos **89,5%** de todo o valor homologado de TIC da cidade.
-   - Os **35 processos de Grande Porte (> R$ 500 mil)** responderam por **95,7% de toda a economia em reais** (`R$ 77,78M`), embora tenham média simples percentual menor (`29,99%`) que compras de pequeno/médio porte (`35%–36%`).
-5. **Oportunidade de Consolidação via Atas de Registro de Preços — SRP (Eixos 2 e 4):**
-   - Apenas **7,89% dos Pregões Eletrônicos** de TIC utilizam SRP, ao mesmo tempo em que a Prefeitura realizou dezenas de Dispensas avulsas de Hardware no período. Centralizar a compra de equipamentos recorrentes em Atas de Registro de Preços e calibrar a cesta de preços de Telecom/Cloud com bases públicas homologadas são as duas maiores oportunidades práticas de eficiência identificadas.
+## Fase 3 — Infraestrutura (Terraform), BigQuery Delta & dbt (Silver/Gold)
+
+> Documentação detalhada: [`docs/eng_features.md`](docs/eng_features.md) e [`docs/analysis_decisions.md`](docs/analysis_decisions.md)
+
+- **IaC + Autenticação Keyless (`terraform/`):** Datasets `bronze_pncp`, `stg_pncp` e `marts_pncp` provisionados via Terraform usando Application Default Credentials (ADC — zero arquivos `.json` de chave em disco) e expiração explícita de **50 dias** compatível com o BigQuery Sandbox.
+- **Carga Delta (`src/load/load_to_bigquery.py`):** `_upload_delta()` compara `_row_hash` (contratações) e `numero_controle_pncp` (classificações) no BigQuery antes de dar `WRITE_APPEND`, permitindo reconstruir o banco em segundos via `main.py --skip-ingest`.
+- **Transformação e Qualidade no dbt (`dbt_pncp/`):**
+  - **Silver (`stg_contratacoes`):** view que padroniza tipos/nomes em `snake_case`, faz `LEFT JOIN` com a IA e isola a versão mais atual de cada processo com `QUALIFY ROW_NUMBER() OVER (PARTITION BY numero_controle_pncp ORDER BY data_atualizacao_global DESC) = 1`.
+  - **Gold (`fct_contratacoes`):** tabela física com `status_processo` (impedindo que valor homologado nulo vire falso desconto de 100%), deságio protegido por `SAFE_DIVIDE`, `grupo_competitividade`, `porte_contratacao`, esfera e janela de propostas.
+  - **22 Data Tests:** `unique`, `not_null` e `accepted_values` validando chaves primárias pós-join e regras de domínio a cada `dbt build`.
+
+---
+
+## Fase 4 — Analytics Engineering (14 Queries SQL) & Principais Insights
+
+> Consultas e saídas: [`dbt_pncp/analyses/resultados_analises.md`](dbt_pncp/analyses/resultados_analises.md) · Análise completa e fontes externas: [`docs/insights.md`](docs/insights.md)
+
+A camada Gold foi explorada por meio de **14 consultas SQL** organizadas em 5 eixos (executadas e exportadas automaticamente pelo `src/utils/export_analyses.py`). Os 5 achados mais relevantes para negócio e gestão pública:
+
+1. **Inversão Volume vs. Orçamento:** Nos **247 processos válidos** (`R$ 260,29M` estimados / `R$ 143,31M` homologados), **Hardware** consome **54,25%** da abertura de editais para representar apenas **11,23%** do orçamento (`R$ 16,10M`), enquanto **Serviços de TI** (**14,17%** dos processos) concentra **43,24%** do dinheiro (`R$ 61,97M`).
+2. **Prefeitura e Porto de Santos concentram 89,5% do gasto:** Consolidando por `orgao_razao_social`, o **Município de Santos** (`R$ 65,39M` pulverizados em 91 processos / 6 unidades) e a **CODESP / Autoridade Portuária** (`R$ 62,87M` concentrados em apenas 11 megacontratos federais) lideram juntos quase todo o orçamento de TIC da cidade.
+3. **Economia de R$ 81,49M e o "Paradoxo do Deságio":** O deságio médio em licitações competitivas de TIC ficou entre **30,85% e 41,98%** (acima da média nacional agregada de 7% do BreveIA por isolarmos apenas modalidades competitivas sem dispensas zeradas). Contudo, descontos extremos de **76% a 93,34%** em Telecom/Cloud sinalizam **superestimativa na pesquisa de preços inicial**, não apenas disputa acirrada.
+4. **Quase R$ 90 milhões parados no funil:** Dos **353 processos de TIC** abertos desde 2024, **28,05% (99 editais, R$ 89,32M estimados)** encerraram sem homologação — indicando alto retrabalho administrativo.
+5. **Oportunidade prática em Atas de Registro de Preços (SRP):** Apenas **7,89%** dos Pregões Eletrônicos de TIC usam SRP, mesmo com a Prefeitura abrindo dezenas de dispensas avulsas de Hardware no mesmo ano (10 dispensas em 2025 e 5 em 2026). Consolidar itens recorrentes em Atas SRP reduziria drasticamente o custo operacional.
+
+---
+
+## Fase 5 — Dashboard Editorial em Power BI (`.pbip`)
+
+> Arquivos do projeto: [`dashboard/pncp_santos_project.pbip`](dashboard/pncp_santos_project.pbip) · Tema: [`dashboard/pncp_theme.json`](dashboard/pncp_theme.json) · PDF completo: [`dashboard/pncp_santos_project.pdf`](dashboard/pncp_santos_project.pdf)
+
+O relatório de 3 páginas foi conectado à `marts_pncp.fct_contratacoes` em **modo Import** (para que o painel nunca quebre caso as tabelas expirem no BigQuery Sandbox), desenhado sob a estética de jornalismo de dados de **Our World in Data** e **The Pudding** (títulos que declaram o insight, paleta sóbria `#1E5098` / `#C93C37`, zero poluição visual) e versionado em Git no formato aberto **`.pbip`** (JSON + TMDL).
+
+### Painel 1 — Visão Geral (Esforço vs. Orçamento, Top 5 Órgãos e Sazonalidade)
+![Painel 1 — Compras Públicas de TIC — Visão Geral](dashboard/assets/p1_visao_geral.png)
+
+### Painel 2 — Economicidade, Deságio (com Benchmark Não-TIC) e Auditoria de Extremos
+![Painel 2 — Economicidade, Deságio e Funil de Homologação](dashboard/assets/p2_economicidade_desagio.png)
+
+### Painel 3 — Competitividade, Contratação Direta, Amparos Legais e Radar de Dispensas
+![Painel 3 — Competitividade, Contratação Direta e SRP](dashboard/assets/p3_competitividade_srp.png)
+
+---
+
+## Status do Projeto & Capítulo Extra (Evolução Pós-V1)
+
+> Roadmap detalhado: [`docs/future_features.md`](docs/future_features.md)
+
+A **V1 deste projeto está 100% concluída** — cobrindo da extração na API até o relatório executivo final. Como evolução técnica opcional (mantendo a filosofia Free Tier):
+- **Capítulo Extra — Orquestração Local com Apache Airflow (`docker-compose`) + Ingestão Incremental:** transformar as etapas do `main.py` em tasks isoladas com *retries* rodando localmente sob demanda e substituir o backfill completo por **High Watermark com overlap** (`MAX(data_publicacao) - 15 dias`, capturando homologações tardias com *fallback* automático caso o Sandbox expire) em contraste com *Sliding Window* fixa.
+- **V2 — Detalhamento de `/itens` e `/resultados`:** aproveitar os 353 IDs já filtrados pela IA para extrair preços unitários por equipamento e concentração de fornecedores (CNPJs vencedores).
 
 ---
 
@@ -103,35 +161,40 @@ A partir das 14 consultas analíticas em [`dbt_pncp/analyses/`](dbt_pncp/analyse
 
 ```text
 ├── config/
-│   └── config.yaml                # Parâmetros centralizados (API, Storage, BigQuery e LLM)
+│   └── config.yaml                  # Parâmetros centralizados (API, Storage, BigQuery e LLM)
 ├── src/
 │   ├── ingest/
-│   │   ├── ingest_pncp.py         # Extração paginada da API PNCP em janelas semestrais
-│   │   └── to_parquet.py          # Normalização JSON -> Parquet com hash SHA-256
+│   │   ├── ingest_pncp.py           # Extração paginada da API PNCP em janelas semestrais
+│   │   └── to_parquet.py            # Normalização JSON -> Parquet com hash SHA-256
 │   ├── classification/
-│   │   ├── schemas.py             # Contratos Pydantic (ClassifiedItem / BatchClassification)
-│   │   ├── prompts.py             # System prompt calibrado para compras públicas de TIC
-│   │   ├── classify_batch.py      # Chamada em lote ao Gemini com retry exponencial
-│   │   ├── run_classification.py  # Orquestrador incremental com checkpoint em Parquet
-│   │   └── evaluate_sample.py     # Cálculo de precisão estratificada e erro padrão (n=50)
+│   │   ├── schemas.py               # Contratos Pydantic (ClassifiedItem / BatchClassification)
+│   │   ├── prompts.py               # System prompt calibrado para compras públicas de TIC
+│   │   ├── classify_batch.py        # Chamada em lote ao Gemini com retry exponencial
+│   │   ├── run_classification.py    # Orquestrador incremental com checkpoint em Parquet
+│   │   └── evaluate_sample.py       # Cálculo de precisão estratificada e erro padrão (n=50)
 │   ├── load/
-│   │   └── load_to_bigquery.py    # Carga incremental (Delta) para o BigQuery
+│   │   └── load_to_bigquery.py      # Carga incremental (Delta) para o BigQuery
 │   └── utils/
-│       ├── load_config.py         # Leitor de configuração YAML
-│       ├── llm_client.py          # Inicialização do cliente Google GenAI
-│       └── export_analyses.py     # Compilador e executor das 14 análises SQL para Markdown
+│       ├── load_config.py           # Leitor de configuração YAML
+│       ├── llm_client.py            # Inicialização do cliente Google GenAI
+│       └── export_analyses.py       # Executor das 14 análises SQL para resultados_analises.md
 ├── terraform/
-│   ├── main.tf                    # Provider Google Cloud lendo config.yaml
-│   └── bigquery.tf                # Provisionamento dos datasets Bronze, Silver e Gold
+│   ├── main.tf                      # Provider Google Cloud lendo config.yaml
+│   └── bigquery.tf                  # Provisionamento dos datasets Bronze, Silver e Gold (50d)
 ├── dbt_pncp/
 │   ├── models/
-│   │   ├── staging/               # View stg_contratacoes + sources.yml + schema.yml
-│   │   └── marts/                 # Tabela física fct_contratacoes + schema.yml
-│   ├── analyses/                  # 14 consultas SQL (Eixos 0 a 4) + resultados_analises.md
+│   │   ├── staging/                 # View stg_contratacoes + sources.yml + schema.yml
+│   │   └── marts/                   # Tabela física fct_contratacoes + schema.yml (22 tests)
+│   ├── analyses/                    # 14 consultas SQL (Eixos 0 a 4) + resultados_analises.md
 │   └── macros/
 │       └── generate_schema_name.sql
-├── docs/                          # Documentação completa de engenharia, validação e insights
-└── main.py                        # Orquestrador central do pipeline Python
+├── dashboard/
+│   ├── pncp_santos_project.pbip     # Projeto Power BI versionado em texto aberto (JSON + TMDL)
+│   ├── pncp_santos_project.pdf      # Exportação completa do relatório (3 páginas)
+│   ├── pncp_theme.json              # Tema customizado inspirado no Our World in Data
+│   └── assets/                      # Prints das 3 páginas (.png) e dashboard_tour.gif
+├── docs/                            # Documentação técnica, estatística, insights e roadmap
+└── main.py                          # Orquestrador central do pipeline Python
 ```
 
 ---
@@ -149,12 +212,12 @@ terraform -chdir=terraform apply
 
 # 3. Executar pipeline Python (Ingestão -> Bronze Parquet -> Classificação IA -> BigQuery)
 uv run python main.py
-# (Opcional) Pular extração da API se o Parquet Bronze já existir localmente:
+# (Opcional) Reconstruir o BigQuery usando o Parquet Bronze e checkpoints locais (0 tokens gastos):
 uv run python main.py --skip-ingest
 
-# 4. Construir modelos Silver/Gold e rodar os 22 testes de qualidade (dbt)
+# 4. Construir camadas Silver/Gold e rodar os 22 testes de qualidade (dbt)
 uv run dbt build --project-dir dbt_pncp --profiles-dir dbt_pncp
 
-# 5. Compilar e executar as 14 consultas analíticas gerando resultados_analises.md
+# 5. Compilar e executar as 14 consultas SQL gerando resultados_analises.md
 uv run python -m src.utils.export_analyses
 ```

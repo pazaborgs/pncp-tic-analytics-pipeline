@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "8fdf1104546002d7cae4",
   "position": {
     "x": 652,
@@ -27,8 +27,8 @@
                 }
               },
               "queryRef": "_medidas.Qtd Processos",
-              "nativeQueryRef": "Quantidade de Processos",
-              "displayName": "Quantidade de Processos",
+              "nativeQueryRef": "Quantidade de Processos TIC Efetivos",
+              "displayName": "Quantidade de Processos TIC Efetivos",
               "format": "#,0"
             }
           ]

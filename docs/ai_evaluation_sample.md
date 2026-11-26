@@ -13,7 +13,7 @@ Semente aleatória fixa (`random_state=42`) para reprodutibilidade estatística 
 | **Não-TIC** | 4.835 | — | 10 | **100%** (10/10) | **100%** (10/10) | Nenhuma divergência (0 falsos negativos na amostra). |
 
 ### Métricas Consolidadas (Estimador Estratificado Ponderado $\hat{P}_{st} = \sum W_h \hat{p}_h$)
-- **Precisão Positiva Ponderada (`is_tic = True`):** $\mathbf{89,2\%}$ ($\pm 4,6\%$ de erro padrão amostral) $\rightarrow$ estima-se $\approx 315$ processos estritamente de TIC dentre os 353 sinalizados.
+- **Precisão Positiva Ponderada (`is_tic = True`):** $\mathbf{89,2\%}$ ($\pm 5,97\%$ de erro padrão estratificado) $\rightarrow$ estima-se $\approx 315$ processos estritamente de TIC dentre os 353 sinalizados.
 - **Fidelidade de Subcategoria (dentre os Verdadeiros Positivos):** $\mathbf{97,1\%}$ ($34 / 35$).
 - **Acurácia Global Ponderada ($N = 5.188$):** $\mathbf{99,26\%}$.
 

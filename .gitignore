@@ -15,6 +15,7 @@ dbt_pncp/target/
 dbt_pncp/logs/
 dbt_pncp/dbt_packages/
 docs/study_notes.md
+docs/linkedin_series_prompt.md
 .vscode/
 extensoes.txt
 **/.pbi/localSettings.json

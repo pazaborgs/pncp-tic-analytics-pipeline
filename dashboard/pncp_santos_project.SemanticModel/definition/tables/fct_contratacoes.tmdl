@@ -13,7 +13,7 @@ table fct_contratacoes
 		dataType: int64
 		formatString: 0
 		lineageTag: fd0793ec-ac08-4f32-98e8-fb94f2873ca8
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ano_compra
 
 		annotation SummarizationSetBy = Automatic
@@ -449,7 +449,7 @@ table fct_contratacoes
 		dataType: int64
 		formatString: 0
 		lineageTag: 235ba2fa-86d4-4734-8a97-99f8b87310bf
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ano_publicacao
 
 		annotation SummarizationSetBy = Automatic
